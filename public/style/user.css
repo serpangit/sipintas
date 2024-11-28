@@ -1,0 +1,33 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background: #EEFFFF;
+    height: 100vh;
+    height: 100%;
+}
+.content{
+    /* max-width: 60%; */
+    /* height: 100vh; */
+    height: 100%;
+    background: white;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+footer.sticky-footer {
+    /* padding: 2rem 0; */
+    flex-shrink: 0;
+  }
+
+footer.sticky-footer .copyright {
+    line-height: 1;
+    font-size: 0.8rem;
+}
+  
+body.sidebar-toggled footer.sticky-footer {
+    width: 100%;
+}
