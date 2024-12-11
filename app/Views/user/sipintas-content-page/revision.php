@@ -1,11 +1,11 @@
 <div class="row g-1 mt-2">
     <?php $i = 0; ?>
-    <?php foreach ($data_open as $key) {
+    <?php foreach ($data_revision as $key) {
         $i++;
         if ($revision_count > 0) {
             if ($key['status'] == 'revision') {
     ?>
-                <div class="col-sm-12 col-lg-4 g-2 rounded overflow-y-auto">
+                <div class="col-sm-12 col-lg-4 g-2 rounded overflow-y-auto" style="font-size: 12px;">
                     <div class="card">
                         <div id="carouselExample<?php echo $i ?>" class="carousel carousel-dark slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
@@ -57,15 +57,20 @@
                             </button>
                         </div>
                         <div class="col align-self-end" style="height: 100px; padding: 10px;">
-                            <span class="badge bg-warning text-dark"><?= $key['status']; ?></span>
+                            <span class="badge bg-warning"><?= $key['status']; ?></span>
                         </div>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal-<?= $key['id_temuan'] ?>">
                             <div class="card-body" style="margin-top: -15px;">
                                 <table style="width: 100%;">
                                     <tr>
+                                        <td>ID Temuan</td>
+                                        <td>:</td>
+                                        <td><?= $key['id_temuan']; ?></td>
+                                    </tr>
+                                    <tr>
                                         <td>Kategori</td>
                                         <td>:</td>
-                                        <td><? $key['nama_kategori']; ?></td>
+                                        <td><?= $key['nama_kategori']; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Indikator</td>
@@ -333,7 +338,7 @@
     <div class="row mt-2">
         <div class="col-12 d-flex justify-content-center">
             <?php
-            echo ($revision_count > 0) ? $pager->links('sipintas', 'bootstrap-pagination') : "";
+            echo ($revision_count > 0) ? $pager_revision->links('sipintas', 'bootstrap-pagination') : "";
             // echo $pager->links();
             ?>
         </div>

@@ -20,6 +20,8 @@ $routes->post('/login/keluar', 'Login::keluar');
 // halaman routes user
 $routes->get('/user', 'User::dashboard', ['filter' => 'auth']);
 $routes->get('/user/dashboard', 'User::dashboard', ['filter' => 'auth']);
+$routes->get('/user/review', 'User::review', ['filter' => 'auth']);
+$routes->get('/user/revision', 'User::revision', ['filter' => 'auth']);
 $routes->get('/user/tambah_temuan', 'User::tambah_temuan', ['filter' => 'auth']);
 $routes->post('/user/tambah_temuan', 'User::tambah_temuan', ['filter' => 'auth']);
 $routes->get('/user/layout/page_layout', 'User::page_layout', ['filter' => 'auth']);

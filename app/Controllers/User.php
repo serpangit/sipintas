@@ -64,24 +64,15 @@ class User extends BaseController
             $open_count = count($this->temuan_ais->where('status', 'open')->findAll());
             $review_count = count($this->temuan_ais->where('status', 'review')->findAll());
             $revision_count = count($this->temuan_ais->where('status', 'revision')->findAll());
-            // $data_open = $this->temuan_ais->data('open');
-            $data_open = $this->temuan_ais->data('open');
-            // $data_review = $this->temuan_ais->data_review('review');
-            // $data = $this->temuan_ais->data('open');
-            // $data_review = $this->temuan_ais->data('review');
-            // $query = $this->temuan_ais
-            //     ->select("id_temuan, spm_kategori.nama_kategori, spm_indikator.nama_indikator, spm_subindikator.nama_subindikator, date_format(created_at, '%Y-%m-%d') as created_at, temuan_ais.target_pemenuhan, temuan_ais.tanggal_selesai, lokasi_objek, jalur, deskripsi, dokumentasi_0, dokumentasi_50, dokumentasi_100, latitude, longitude, pic, status")
-            //     ->join('spm_kategori', 'spm_kategori.id_kategori = temuan_ais.idfk_kategori')
-            //     ->join('spm_indikator', 'spm_indikator.id_indikator = temuan_ais.idfk_indikator')
-            //     ->join('spm_subindikator', 'spm_subindikator.id_subindikator = temuan_ais.idfk_subindikator');
+            session()->setFlashdata('stat', 'open');
             $data = [
-                'data_open' => $data_open->paginate(6, 'sipintas'),
-                // 'data_review' => $data_review->paginate(6, 'sipintas2'),
+                'data_open' => $this->temuan_ais->data('open')->paginate(6, 'sipintas'),
+                'data_review' => $this->temuan_ais->data('review')->paginate(6, 'sipintas2'),
                 'open_count' => $open_count,
                 'review_count' => $review_count,
                 'revision_count' => $revision_count,
                 'review_count' => $review_count,
-                'pager_open' => $data_open->pager,
+                'pager_open' => $this->temuan_ais->data('open')->pager,
                 // 'pager_review' => $data_review->pager,
             ];
             //dd($data['revision_query']);
@@ -94,6 +85,49 @@ class User extends BaseController
             ];
             return view('/user/dashboard', $data);
         }
+    }
+
+    public function review()
+    {
+        //$alias = session()->get('alias');
+        $open_count = count($this->temuan_ais->where('status', 'open')->findAll());
+        $review_count = count($this->temuan_ais->where('status', 'review')->findAll());
+        $revision_count = count($this->temuan_ais->where('status', 'revision')->findAll());
+        session()->setFlashdata('stat', 'review');
+        $data = [
+            'data_open' => $this->temuan_ais->data('open')->paginate(6, 'sipintas'),
+            'data_review' => $this->temuan_ais->data('review')->paginate(6, 'sipintas2'),
+            'open_count' => $open_count,
+            'review_count' => $review_count,
+            'revision_count' => $revision_count,
+            'review_count' => $review_count,
+            'pager_open' => $this->temuan_ais->data('open')->pager,
+            'pager_review' => $this->temuan_ais->data('review')->pager,
+        ];
+        //dd($data['revision_query']);
+        return view('/user/dashboard', $data);
+    }
+
+    public function revision()
+    {
+        $open_count = count($this->temuan_ais->where('status', 'open')->findAll());
+        $review_count = count($this->temuan_ais->where('status', 'review')->findAll());
+        $revision_count = count($this->temuan_ais->where('status', 'revision')->findAll());
+        session()->setFlashdata('stat', 'revision');
+        $data = [
+            'data_open' => $this->temuan_ais->data('open')->paginate(6, 'sipintas'),
+            'data_review' => $this->temuan_ais->data('review')->paginate(6, 'sipintas2'),
+            'data_revision' => $this->temuan_ais->data('revision')->paginate(6, 'sipintas3'),
+            'open_count' => $open_count,
+            'review_count' => $review_count,
+            'revision_count' => $revision_count,
+            'review_count' => $review_count,
+            'pager_open' => $this->temuan_ais->data('open')->pager,
+            'pager_review' => $this->temuan_ais->data('review')->pager,
+            'pager_revision' => $this->temuan_ais->data('revision')->pager,
+        ];
+        //dd($data['revision_query']);
+        return view('/user/dashboard', $data);
     }
 
     public function detail_ais($id)

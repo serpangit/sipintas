@@ -78,8 +78,48 @@
         <!-- ====================== Content ======================== -->
         <hr class="border border-primary border-5">
         <div class="col-12" style="min-height: 75vh;">
-            <?= $this->renderSection('content') ?>
-
+            <div class="row">
+                <div class="col-2">
+                    <div class="d-flex flex-column flex-shrink-0 p-0">
+                        <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                            <span class="fs-4" style="text-transform: uppercase;">SPM <?= session()->get('alias') ?> </span>
+                        </a>
+                        <hr>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item">
+                                <a href="<?= base_url('user/dashboard'); ?>" class="nav-link tombol <?= (session()->getFlashdata('stat') == 'open') ? 'active' : 'link-dark' ?>" aria-current="page">
+                                    <div class="d-flex justify-content-between">
+                                        Open
+                                        <span class="badge bg-danger"><?= $open_count; ?></span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('user/review'); ?>" class="nav-link tombol <?= (session()->getFlashdata('stat') == 'review') ? 'active' : 'link-dark' ?>">
+                                    <div class="d-flex justify-content-between">
+                                        Review
+                                        <?php echo ($review_count > 0) ? "<span class='badge bg-danger'>$review_count</span>" : ''  ?>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('user/revision'); ?>" class="nav-link tombol  <?= (session()->getFlashdata('stat') == 'revision') ? 'active' : 'link-dark'; ?>">
+                                    <div class="d-flex justify-content-between">
+                                        Revision
+                                        <?php echo ($revision_count > 0) ? "<span class='badge bg-danger'>$revision_count</span>" : ''  ?>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <!-- <h1>test</h1> -->
+                    <?= $this->renderSection('content')
+                    ?>
+                </div>
+            </div>
         </div>
         <!-- ====================== End Content ======================== -->
         <hr class="border border-primary border-1 border-opacity-75">

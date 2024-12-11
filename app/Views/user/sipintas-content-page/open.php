@@ -6,8 +6,7 @@
         if ($open_count > 0) {
             if ($key['status'] == 'open') {
     ?>
-                <div class="col-sm-12 col-lg-4 g-2 rounded overflow-y-auto">
-
+                <div class="col-sm-12 col-lg-4 g-2 rounded overflow-y-auto" style="font-size: 12px;">
                     <div class="card">
                         <div id="carouselExample<?php echo $i ?>" class="carousel carousel-dark slide" data-bs-ride="carousel">
                             <div class="carousel-inner">

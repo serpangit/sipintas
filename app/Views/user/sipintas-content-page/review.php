@@ -1,13 +1,11 @@
 <div class="row g-1 mt-2">
     <?php $i = 0; ?>
     <?php foreach ($data_review as $key) {
-        dd($key);
         $i++;
         if ($review_count > 0) {
             if ($key['status'] == 'review') {
     ?>
-                <div class="col-sm-12 col-lg-4 g-2 rounded overflow-y-auto">
-
+                <div class="col-sm-12 col-lg-4 g-2 rounded overflow-y-auto" style="font-size: 12px;">
                     <div class="card">
                         <div id="carouselExample<?php echo $i ?>" class="carousel carousel-dark slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
@@ -59,17 +57,21 @@
                             </button>
                         </div>
                         <div class="col align-self-end" style="height: 100px; padding: 10px;">
-                            <span class="badge bg-secondary"><?= $key['status']; ?></span>
+                            <span class="badge bg-info"><?= $key['status']; ?></span>
                         </div>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal-<?= $key['id_temuan'] ?>">
                             <div class="card-body" style="margin-top: -15px;">
                                 <table style="width: 100%;">
-                                    <!-- <tr>
+                                    <tr>
+                                        <td>ID Temuan</td>
+                                        <td>:</td>
+                                        <td><?= $key['id_temuan']; ?></td>
+                                    </tr>
+                                    <tr>
                                         <td>Kategori</td>
                                         <td>:</td>
-                                        <td><?php //$key['nama_kategori']; 
-                                            ?></td>
-                                    </tr> -->
+                                        <td><?= $key['nama_kategori']; ?></td>
+                                    </tr>
                                     <tr>
                                         <td>Indikator</td>
                                         <td>:</td>

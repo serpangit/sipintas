@@ -366,26 +366,44 @@
     <div class="col-12" style="min-height: 65vh;">
         <div class="row g-1 mt-2 ">
             <?php $i = 0; ?>
-            <div class="h3" style="text-transform: uppercase;">SPM <?= session()->get('alias') ?></div>
-            <hr style="width: 100%; border-width: 2px;" class="mt-0 mb-0">
-            <ul class="nav nav-tabs">
-                <li class="nav-item"><a href="#open" class="nav-link active" aria-current="page">Open <?= $open_count > 0 ? "<span class='badge bg-danger'>$open_count</span>" : '' ?></a></li>
-                <li class="nav-item"><a href="#review" class="nav-link">On Review <?= $review_count > 0 ? "<span class='badge bg-danger'>$review_count</span>" : ""; ?></a></li>
-                <li class="nav-item"><a href="#revision" class="nav-link">Revision <?= $revision_count > 0 ? "<span class='badge bg-danger'>$revision_count</span>" : ""; ?></a></li>
-            </ul>
-            <div class="tab-content">
+            <?php
+            $stat = session()->getFlashdata('stat');
+
+            switch ($stat) {
+                case 'open':
+                    echo $this->include('user/sipintas-content-page/open');
+                    break;
+                case 'review':
+                    echo $this->include('user/sipintas-content-page/review');
+                    break;
+                case 'revision':
+                    echo $this->include('user/sipintas-content-page/revision');
+                    break;
+            }
+            ?>
+            <?php //echo $this->include('user/sipintas-content-page/open'); 
+            ?>
+            <?php
+            //echo $this->include('user/sipintas-content-page/review');
+            ?>
+            <?php // echo $this->include('user/sipintas-content-page/revision'); 
+            ?>
+
+            <!-- <div class="tab-content">
                 <div id="open" class="tab-pane fade show active">
-                    <?= $this->include('user/sipintas-content-page/open'); ?>
+                    <?php //$this->include('user/sipintas-content-page/open'); 
+                    ?>
                 </div>
                 <div id="review" class="tab-pane fade">
                     <?php
-                    // echo $this->include('user/sipintas-content-page/review');
+                    //echo $this->include('user/sipintas-content-page/review');
                     ?>
                 </div>
                 <div id="revision" class="tab-pane fade">
-                    <?= $this->include('user/sipintas-content-page/revision'); ?>
+                    <?php //$this->include('user/sipintas-content-page/revision'); 
+                    ?>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 <?php } ?>
